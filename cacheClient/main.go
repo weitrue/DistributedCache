@@ -8,7 +8,7 @@
 package main
 
 import (
-	"DistributedCache/cache-benchmark/client"
+	"DistributedCache/cacheClient/client"
 	"flag"
 	"fmt"
 )
@@ -18,7 +18,7 @@ func main() {
 	op := flag.String("c", "get", "command, could be get/set/del")
 	key := flag.String("k", "", "key")
 	value := flag.String("v", "", "value")
-	typ := flag.String("type", "http", "cache type")
+	typ := flag.String("t", "http", "cache type")
 
 	flag.Parse()
 
