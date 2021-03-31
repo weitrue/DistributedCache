@@ -7,6 +7,8 @@
 
 package cache
 
+import "DistributedCache/cache/memory"
+
 /**
  * 定义缓存接口对外暴露的接口，实现与定义分离,从而达到支持多态的目的
  */
@@ -18,5 +20,5 @@ type Cache interface {
 	// 从缓存中删除key
 	Del(string) error
 	// 获取缓存状态
-	GetStat() Stat
+	GetStat() memory.Stat
 }

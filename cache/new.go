@@ -7,16 +7,23 @@
 
 package cache
 
-import "log"
+import (
+	"DistributedCache/cache/memory"
+	"log"
+)
 
 func New(typ string) Cache {
 	var c Cache
 	if typ == "inmemory" {
 		// 内存方式实现的缓存
-        c = newInMemoryCache()
+		c = memory.NewInMemoryCache()
+	}
+	if typ == "rocksdb" {
+		// 基于 rocksdb 存储
+
 	}
 	if c == nil {
-		panic("Unknown Cache Type "+ typ)
+		panic("Unknown Cache Type " + typ)
 	}
 	log.Println(typ, "ready to server")
 	return c

@@ -5,9 +5,11 @@
  * Description: 缓存对象（内存方式）
  **/
 
-package cache
+package memory
 
-import "sync"
+import (
+	"sync"
+)
 
 type InMemoryCache struct {
 	c     map[string][]byte
@@ -16,8 +18,8 @@ type InMemoryCache struct {
 }
 
 /**
-   实现接口方法，加入缓存（内存）
- */
+  实现接口方法，加入缓存（内存）
+*/
 func (c *InMemoryCache) Set(k string, v []byte) error {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
@@ -31,8 +33,8 @@ func (c *InMemoryCache) Set(k string, v []byte) error {
 }
 
 /**
-   实现接口方法，获取数据
- */
+  实现接口方法，获取数据
+*/
 func (c *InMemoryCache) Get(k string) ([]byte, error) {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
@@ -40,8 +42,8 @@ func (c *InMemoryCache) Get(k string) ([]byte, error) {
 }
 
 /**
-   实现接口方法，从缓存中删除（内存）
- */
+  实现接口方法，从缓存中删除（内存）
+*/
 func (c *InMemoryCache) Del(k string) error {
 	c.mutex.Lock()
 	defer c.mutex.Unlock()
@@ -54,19 +56,19 @@ func (c *InMemoryCache) Del(k string) error {
 }
 
 /**
-   获取缓存当前状态
- */
+  获取缓存当前状态
+*/
 func (c *InMemoryCache) GetStat() Stat {
 	return c.Stat
 }
 
 /**
-   初始化缓存对象（内存方式）
- */
-func newInMemoryCache() *InMemoryCache {
+  初始化缓存对象（内存方式）
+*/
+func NewInMemoryCache() *InMemoryCache {
 	//return &InMemoryCache{make(map[string][]byte), sync.RWMutex{}, Stat{}}
 	return &InMemoryCache{
-		c: make(map[string][]byte),
+		c:     make(map[string][]byte),
 		mutex: sync.RWMutex{},
 		Stat:  Stat{},
 	}
