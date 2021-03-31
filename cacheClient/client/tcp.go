@@ -7,7 +7,6 @@
 
 package client
 
-
 import (
 	"bufio"
 	"errors"

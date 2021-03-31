@@ -75,4 +75,3 @@ func newHTTPClient(server string) *httpClient {
 func (c *httpClient) PipelinedRun([]*Cmd) {
 	panic("httpClient pipelined run not implement")
 }
-
